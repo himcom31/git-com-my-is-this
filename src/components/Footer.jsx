@@ -26,7 +26,12 @@ const SERVICES = [
 ];
 
 const COMPANY = ["About Us", "Portfolio", "Pricing", "Contact", "Blog"];
-const LEGAL   = ["Privacy Policy", "Terms of Service", "Cookie Policy", "Disclaimer"];
+const LEGAL = [
+  { key: "Privacy Policy", to: "/page/policy" },
+  { key: "Terms of Service", to: "/terms" },
+  { key: "Cookie Policy", to: "/cookies" },
+  { key: "Disclaimer", to: "/disclaimer" },
+];
 
 const PARTICLE_COLORS = ["#6C63FF", "#ff6fd8", "#43e7ad", "#f9a825", "#ffffff"];
 
@@ -413,15 +418,16 @@ export default function Footer() {
 
           {/* Legal */}
           <div className="as-col-enter">
-            <div className="as-col-head">Legal</div>
-            <ul className="as-links">
-              {LEGAL.map((s) => (
-                <li key={s}>
-                  <Link to="/page/policy">{s}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+  <div className="as-col-head">Legal</div>
+
+  <ul className="as-links">
+    {LEGAL.map((s) => (
+      <li key={s.key}>
+        <Link to={s.to}>{s.key}</Link>
+      </li>
+    ))}
+  </ul>
+</div>
         </div>
 
         {/* Bottom bar */}
